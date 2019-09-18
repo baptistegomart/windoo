@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello IdeaController!{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <h1>Dernières idées</h1>
+
+    {% for idea in ideas %}
+
+        <article>
+            <h3>{{idea.title}}</h3>
+                <div class="metadata font-italic">postée le {{idea.date | date('d/m/Y')}} à {{idea.date | date('H:i')}} </div>
+            
+            <div class="container">
+                {{ idea.text }}
+            </div>
+                    
+        
+        
+        </article>
+    {% endfor %}
+
+    
+</div>
+{% endblock %}

@@ -1,0 +1,77 @@
+
+
+/* custom buttons */
+
+.btn-primary {
+    background-color: #7289da;
+    border-color: #7289da;
+  }
+  
+  .btn-primary:hover {
+    background-color: #f68c0f !important;
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+    .btn:hover::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0; }
+  
+  .btn-primary:active, .btn-primary:focus {
+        outline: none;
+        transform: translateY(-1px);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  
+        
+  .btn-primary, .btn-primary:link, .btn-primary:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: .5rem 2rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all .2s;
+    position: relative;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer; }
+  
+    .btn--animated {
+      animation: moveInBottom .5s ease-out .75s;
+      animation-fill-mode: backwards; }
+
+
+      /* button secondary */
+
+
+      .btn-secondary {
+        /* background-color: #7289da; */
+        border-color: white;
+      }
+      
+      .btn-secondary:hover {
+        background-color: #f68c0f !important;
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+        .btn:hover::after {
+          transform: scaleX(1.4) scaleY(1.6);
+          opacity: 0; }
+      
+      .btn-secondary:active, .btn-secondary:focus {
+            outline: none;
+            transform: translateY(-1px);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+      
+            
+      .btn-secondary, .btn-secondary:link, .btn-secondary:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        display: inline-block;
+        border-radius: 10rem;
+        transition: all .2s;
+        position: relative;
+        font-size: 1rem;
+        border: none;
+        cursor: pointer; }
+      
+        .btn--animated {
+          animation: moveInBottom .5s ease-out .75s;
+          animation-fill-mode: backwards; }

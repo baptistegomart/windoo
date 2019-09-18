@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue sur la boîte à idées Windoo{% endblock %}
+
+{% block body %}
+
+
+<div class="example-wrapper mx-auto">
+    <h1>Bienvenue sur la boîte à idées</h1>
+
+    
+ 
+     {% if is_granted('IS_AUTHENTICATED_FULLY')%}
+
+     <a href="#" class="btn btn-primary">Proposer une idée</a>
+     <a href="{{ path('show_idea') }}" class="btn btn-primary">Voir les idées</a>
+
+     {% else %}
+       
+        <a href="{{ path('registration') }}" class="btn btn-primary">S'inscrire</a>
+        <a href="{{ path('security_login') }}" class="btn btn-primary">Se connecter</a>
+    
+    {% endif %}
+</div>
+{% endblock %}
