@@ -23,7 +23,7 @@ class Idea
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="idea")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $author;
 

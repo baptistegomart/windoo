@@ -64,6 +64,11 @@ class User implements UserInterface
 
     public $confirm_password;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $status;
+
 
 
     public function __construct()
@@ -178,8 +183,20 @@ class User implements UserInterface
         
     }
 
+    public function getStatus(): ?int
+    {
+        return $this->status;
+    }
+
+    public function setStatus(int $status): self
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
     public function getRoles()
     {
-        return ['ROLE_USER'];
+        return $this->status === 0 ? ['ROLE_USER'] : ['ROLE_ADMIN'];
     }
 }

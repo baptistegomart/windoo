@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Windoo - Admin{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper text-center mt-4">
+    <h1>Bonjour, admin</h1>
+
+    <p>Ici vous pouvez modérer les idées proposées par les utilisateurs</p>
+
+     <div class="container_fluid mx-auto text-center">
+        <a href="{{ path('admin_order_by_rating') }}" class="btn btn-info">Du - au + populaire</a>
+        <a href="{{ path('admin_order_by_date') }}" class="btn btn-info">Du + récent au - récent</a>
+    </div>
+
+    {% for idea in ideas %}
+
+        <article class="container_fluid mx-auto w-50 container_idea">
+            <h3>{{idea.title}}</h3>
+                <div class="rating float-left"><i class="fas fa-award"></i> {{ idea.rating }}</div>
+                <div class="font-italic">postée le {{idea.date | date('d/m/Y')}} à {{idea.date | date('H:i')}} </div>
+            
+            <div class="container_fluid mx-auto w-100">
+                {{ idea.text }}
+            </div>
+        
+            <div class="mt-2">
+                <a href="{{ path('delete_idea', { 'id' : idea.id }) }}" class="btn btn-danger" onClick="(function(){
+    confirm('Etes-vous sûr(e) de vouloir supprimer cette idée ? Cette action est irréversible.');
+    
+})();"> <i class="fas fa-trash-alt"></i>  Supprimer</a>
+            </div>
+
+        </article>
+    {% endfor %}
+
+    
+</div>
+{% endblock %}

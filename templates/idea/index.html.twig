@@ -5,20 +5,31 @@
 {% block body %}
 
 <div class="example-wrapper">
-    <h1>Dernières idées</h1>
+    <h1 class="text-center">Dernières idées</h1>
+
+    <div class="container_fluid mx-auto text-center">
+        <a href="{{ path('order_by_rating') }}" class="btn btn-info">Classer par vote décroissant</a>
+        <a href="{{ path('order_by_date') }}" class="btn btn-info">Du + récent au - récent</a>
+    </div>
+
+    
 
     {% for idea in ideas %}
 
-        <article>
+        <article class="container_fluid mx-auto w-50 container_idea">
             <h3>{{idea.title}}</h3>
-                <div class="metadata font-italic">postée le {{idea.date | date('d/m/Y')}} à {{idea.date | date('H:i')}} </div>
+                <div class="rating float-left"><i class="fas fa-award"></i> {{ idea.rating }}</div>
+                <div class="font-italic">postée le {{idea.date | date('d/m/Y')}} à {{idea.date | date('H:i')}} </div>
             
-            <div class="container">
+            <div class="container_fluid mx-auto w-100">
                 {{ idea.text }}
             </div>
                     
-        
-        
+            <div class="mt-2">
+                <a href="#" class="btn btn-success"><i class="fas fa-thumbs-up"></i>  Excellente idée!</a>
+                <a href="#" class="btn btn-danger"><i class="fas fa-thumbs-down"></i>  Bof!</a>
+            </div>
+
         </article>
     {% endfor %}
 
