@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints\DateTime;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class IdeaController extends AbstractController
@@ -83,6 +84,7 @@ class IdeaController extends AbstractController
 
             
             $idea->setDate(new \DateTime());
+            $idea->setRating(0);
 
             $manager->persist($idea);
             $manager->flush();
@@ -98,37 +100,51 @@ class IdeaController extends AbstractController
     
     }
 
-    // /**
-    //  * @Route("/idea/upvote/{id}", name="upvote")
-    //  */
+/**
+     * @Route("/idea/upvote/{id}", name="upvote")
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
+     */
+public function upvote($id)
+{
+$entitymManager = $this->getDoctrine()->getManager();
+$idea = $entitymManager->getRepository(Idea::class)->find($id);
 
-    // public function upvote($id)
-    // {
-    //     $em = $this->getDoctrine()->getManager();
-    //     $idea = $em->getRepository(Idea::class)->find($id);
-    //         // $rating = $this->getRating();
-    //         $idea = setRating(rating + 1);
-    //         $em->flush();
 
-    //         return $this->redirectToRoute('show_idea', [
-    //             'ideas'=>$idea
-    //         ]);
-    //     }
+$rating = $idea->getRating();
+$idea->setRating($rating + 1);
+$entitymManager->flush();
+
+return $this->redirectToRoute('show_idea');
+
+
+}
+
+/**
+     * @Route("/idea/downvote/{id}", name="downvote")
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
+     */
+    public function downvote($id)
+    {
+    $entitymManager = $this->getDoctrine()->getManager();
+    $idea = $entitymManager->getRepository(Idea::class)->find($id);
     
+    
+    $rating = $idea->getRating();
+    
+    //one can't downvote an idea with a grade of 0
+    if($rating === 0){
+        $idea->setRating(0);
+    } else {
+        $idea->setRating($rating - 1);
+    }
 
-    // public function downvote(IdeaRepository $repo)
-    // {   
-    //     $repo = $this->getDoctrine()->getRepository(Idea::class);
-    //     $idea = $repo->findBy(
-    //         array(),
-    //          array('date'=>'DESC')
-    //      );
+    $entitymManager->flush();
+    
+    return $this->redirectToRoute('show_idea');
+    
+    
+    }
 
-    //     return $this->render('idea/index.html.twig', [
-    //         'controller_name' => 'IdeaController',
-    //         'ideas'=> $idea
-    //     ]);
 
-    // }
 
 }

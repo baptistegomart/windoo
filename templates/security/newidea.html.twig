@@ -2,10 +2,11 @@
 
 {% block body %}
 
-    <h1>Proposer une nouvelle idée</h1>
-<div class="row d-flex flex-nowrap mx-auto justify-content-around">
+    <h1 class="text-center mt-3">Proposer une nouvelle idée</h1>
+<div class="row d-flex flex-nowrap mx-auto justify-content-around text-center">
 
         <div class="col-md-12 form-group">
+            
             {{ form_start(form) }}
             {{ form_row(form.title, {'label':'Titre','attr': {'placeholder': 'Mon idée en une phrase'}}) }}
             {{ form_row(form.text, {'label':'Mon idée','attr': {'placeholder': 'Soyez créatif(ve)!'}}) }}

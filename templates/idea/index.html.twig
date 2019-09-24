@@ -8,8 +8,8 @@
     <h1 class="text-center">Dernières idées</h1>
 
     <div class="container_fluid mx-auto text-center">
-        <a href="{{ path('order_by_rating') }}" class="btn btn-info">Classer par vote décroissant</a>
-        <a href="{{ path('order_by_date') }}" class="btn btn-info">Du + récent au - récent</a>
+        <a href="{{ path('order_by_rating') }}" class="btn btn-info">De la + populaire à la - populaire</a>
+        <a href="{{ path('order_by_date') }}" class="btn btn-info">De la + récente à la - récente</a>
     </div>
 
     
@@ -26,8 +26,8 @@
             </div>
                     
             <div class="mt-2">
-                <a href="#" class="btn btn-success"><i class="fas fa-thumbs-up"></i>  Excellente idée!</a>
-                <a href="#" class="btn btn-danger"><i class="fas fa-thumbs-down"></i>  Bof!</a>
+                <a href="{{ path('upvote', {'id':idea.id}) }}" class="btn btn-success"><i class="fas fa-thumbs-up"></i>  Excellente idée!</a>
+                <a href="{{ path('downvote', {'id':idea.id}) }}" class="btn btn-danger"><i class="fas fa-thumbs-down"></i>  Bof!</a>
             </div>
 
         </article>

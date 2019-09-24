@@ -10,8 +10,8 @@
     <p>Ici vous pouvez modérer les idées proposées par les utilisateurs</p>
 
      <div class="container_fluid mx-auto text-center">
-        <a href="{{ path('admin_order_by_rating') }}" class="btn btn-info">Du - au + populaire</a>
-        <a href="{{ path('admin_order_by_date') }}" class="btn btn-info">Du + récent au - récent</a>
+        <a href="{{ path('admin_order_by_rating') }}" class="btn btn-info">De la - populaire à la + populaire</a>
+        <a href="{{ path('admin_order_by_date') }}" class="btn btn-info">De la - récente à la + récente</a>
     </div>
 
     {% for idea in ideas %}
